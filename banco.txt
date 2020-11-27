@@ -1,0 +1,34 @@
+create database hotelaria;
+
+create table cliente (
+cpf varchar(15) primary key,
+nome varchar(100),
+telefone varchar(15),
+cep varchar(8),
+ativo int (1)
+);
+
+create table quarto(
+numero_quarto varchar (10) primary key,
+acomodacao varchar (15),
+disponivel int (1),
+status_limpeza int,
+valor float
+);
+
+create table reserva(
+numero_reserva int (20) primary key auto_increment,
+checkin int,
+checkout int,
+data_inicio date,
+data_fim date,
+nro_quarto varchar(15),
+cpf_cliente varchar(15),
+valor_total float,
+foreign key (nro_quarto) references quarto(numero_quarto),
+foreign key (cpf_cliente) references cliente(cpf)
+);
+
+insert into quarto (numero_quarto, acomodacao, disponivel, status_limpeza, valor)
+VALUES ('201', 'solteiro', 1, 0, 100), ('202', 'solteiro2', 1, 0, 150), ('301', 'solteiro2', 1, 0, 150), ('302', 'casal', 1, 0, 150),('401', 'solteiro', 1, 0, 100), ('402', 'casal', 1, 0, 150);
+
